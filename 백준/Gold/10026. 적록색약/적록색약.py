@@ -1,11 +1,12 @@
 import sys
 sys.setrecursionlimit(10**6)
 
+###DFS 풀이
 def Bdfs(x,y):
     if x<0 or y<0 or y>=n or x>=n:
         return False
     if graph[x][y]=='B':
-        graph[x][y]='O'
+        graph[x][y]='O' ###파랑은 O로 방문처리
         Bdfs(x-1,y)
         Bdfs(x+1,y)
         Bdfs(x,y-1)
@@ -17,7 +18,7 @@ def Rdfs(x,y):
     if x<0 or y<0 or y>=n or x>=n:
         return False
     if graph[x][y]=='R':
-        graph[x][y]='Z'
+        graph[x][y]='Z' ###적록색 맞추기 위해 초록, 빨강을 Z로 방문처리 
         Rdfs(x-1,y)
         Rdfs(x+1,y)
         Rdfs(x,y-1)
@@ -40,7 +41,7 @@ def Gdfs(x,y):
 def GRdfs(x,y):
     if x<0 or y<0 or y>=n or x>=n:
         return False
-    if graph[x][y]=='Z':
+    if graph[x][y]=='Z':  ###적록을 O로 방문처리
         graph[x][y]='O'
         GRdfs(x-1,y)
         GRdfs(x+1,y)
